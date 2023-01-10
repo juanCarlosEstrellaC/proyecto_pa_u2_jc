@@ -6,8 +6,10 @@ import com.example.demo.uce.modelo.Estudiante;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 
 @Repository
+@Transactional
 public class EstudianteRepoImpl implements IEstudianteRepo {
 	
 	@PersistenceContext
@@ -25,7 +27,7 @@ public class EstudianteRepoImpl implements IEstudianteRepo {
 
 	@Override
 	public Estudiante buscar(Integer id) {
-		return this.entityManager.find(Estudiante.class, id);
+		return this.entityManager.find(Estudiante.class, id); // find(clase, id)
 	}
 
 	@Override
