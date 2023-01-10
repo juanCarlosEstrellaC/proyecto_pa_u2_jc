@@ -6,13 +6,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.uce.modelo.Estudiante;
+import com.example.demo.uce.modelo.Profesor;
 import com.example.demo.uce.service.IEstudianteService;
+import com.example.demo.uce.service.IProfesorService;
 
 @SpringBootApplication
 public class ProyectoPaU2JcApplication implements CommandLineRunner{
 
 	@Autowired
 	private IEstudianteService estudianteService;
+	
+	@Autowired
+	private IProfesorService profesorService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoPaU2JcApplication.class, args);
@@ -28,16 +33,31 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 		estu.setCiudad("Quito");
 		estu.setGenero("M");
 		
-		
-		this.estudianteService.agregar(estu);
-	
+		// Agregar:
+		//this.estudianteService.agregar(estu);
+		// Modificar:
 		//this.estudianteService.modificar(estu);  // el objeto estu debe tener seteado de ley el el id, para q funcione el metodo modificar. Porcia.
-		
+		// Buscar:
 		//this.estudianteService.buscar(2);
-	
+		// Borrar:
 		//this.estudianteService.borrar(2);
-		//this.estudianteService.borrar(3);;
 
+		
+		Profesor prof = new Profesor();
+		prof.setNombre("Edwin");
+		prof.setApellido("Cardona");
+		prof.setCedula("123549848900");
+		prof.setMateria("Medicina");
+		//No seteo el id, porque eso lo hace la secuencia
+		
+		// Agregar:
+		//this.profesorService.ingresar(prof);
+		// Modificar + buscar:
+		//Profesor p = this.profesorService.buscar(1);
+		//p.setApellido("Archundia Gil");
+		//this.profesorService.actualizar(p);
+		// Borrar:
+		this.profesorService.borrar(4);
 		
 	}
 
