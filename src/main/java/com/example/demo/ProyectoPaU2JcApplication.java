@@ -1,14 +1,18 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.uce.modelo.Ciudadano;
+import com.example.demo.uce.modelo.Empleado;
 import com.example.demo.uce.modelo.Estudiante;
-import com.example.demo.uce.modelo.Profesor;
+import com.example.demo.uce.service.ICiudadanoService;
 import com.example.demo.uce.service.IEstudianteService;
-import com.example.demo.uce.service.IProfesorService;
 
 @SpringBootApplication
 public class ProyectoPaU2JcApplication implements CommandLineRunner{
@@ -17,7 +21,7 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 	private IEstudianteService estudianteService;
 	
 	@Autowired
-	private IProfesorService profesorService;
+	private ICiudadanoService ciudadanoService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoPaU2JcApplication.class, args);
@@ -34,31 +38,21 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 		estu.setGenero("M");
 		
 		// Agregar:
-		//this.estudianteService.agregar(estu);
-		// Modificar:
-		//this.estudianteService.modificar(estu);  // el objeto estu debe tener seteado de ley el el id, para q funcione el metodo modificar. Porcia.
-		// Buscar:
-		//this.estudianteService.buscar(2);
-		// Borrar:
-		//this.estudianteService.borrar(2);
+		this.estudianteService.agregar(estu);
 
 		
-		Profesor prof = new Profesor();
-		prof.setNombre("Edwin");
-		prof.setApellido("Cardona");
-		prof.setCedula("123549848900");
-		prof.setMateria("Medicina");
-		//No seteo el id, porque eso lo hace la secuencia
+		Ciudadano ciu = new Ciudadano();
+		ciu.setNombre("Juan");
+		ciu.setApellido("Estrella");
 		
-		// Agregar:
-		//this.profesorService.ingresar(prof);
-		// Modificar + buscar:
-		//Profesor p = this.profesorService.buscar(1);
-		//p.setApellido("Archundia Gil");
-		//this.profesorService.actualizar(p);
-		// Borrar:
-		this.profesorService.borrar(4);
+		Empleado empl = new Empleado();
+		empl.setSalario(new BigDecimal(20));
+		empl.setFechaIngreso(LocalDateTime.now());
+		empl.setCiudadano(ciu);
 		
+		ciu.setEmpleado(empl);
+		
+		this.ciudadanoService.guardar(ciu);
 	}
 
 }

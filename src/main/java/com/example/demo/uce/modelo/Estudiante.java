@@ -1,4 +1,7 @@
 package com.example.demo.uce.modelo;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 // todos los imports de jakarta.persistent 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,44 +39,105 @@ public class Estudiante {
 	@Column(name = "estu_ciudad")
 	private String ciudad;
 
+	@Column(name = "estu_pais")
+	private String pais;
 	
-	//SET Y GET:
+	@Column(name = "estu_hobby")
+	private String hobby;
+	
+	@Column(name = "estu_salario")
+	private BigDecimal salario;
+	
+	@Column(name = "estu_fechaNacimiento")
+	private LocalDateTime fechaNacimiento;
+
+	
+	// SET Y GET
+	
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getApellido() {
 		return apellido;
 	}
+
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+
 	public String getGenero() {
 		return genero;
 	}
+
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
+
 	public String getCedula() {
 		return cedula;
 	}
+
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
+
 	public String getCiudad() {
 		return ciudad;
 	}
+
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
 
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+
+	public String getHobby() {
+		return hobby;
+	}
+
+	public void setHobby(String hobby) {
+		this.hobby = hobby;
+	}
+
+	public BigDecimal getSalario() {
+		return salario;
+	}
+
+	public void setSalario(BigDecimal salario) {
+		this.salario = salario;
+	}
+
+	public LocalDateTime getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+	
+	
+	// get y set
+
+	
+	
 	
 }
