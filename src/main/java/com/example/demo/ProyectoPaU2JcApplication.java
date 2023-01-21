@@ -52,7 +52,7 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 		
 		ciu.setEmpleado(empl);
 		
-		this.ciudadanoService.guardar(ciu);
+		//this.ciudadanoService.guardar(ciu);
 	}
 
 }
