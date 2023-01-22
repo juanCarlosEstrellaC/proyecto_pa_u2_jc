@@ -33,20 +33,7 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		/*Estudiante estu = new Estudiante();
-		//estu.setId(3);
-		estu.setNombre("Alberto");
-		estu.setApellido("Estrella");
-		estu.setCedula("1723522403");
-		estu.setCiudad("Quito");
-		estu.setGenero("M");
-		
-		// Agregar:
-		//this.estudianteService.agregar(estu);
-		
-		 */
-
-		
+	
 //		Ciudadano ciu = new Ciudadano();
 //		ciu.setNombre("Juan");
 //		ciu.setApellido("Estrella");
@@ -79,5 +66,16 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 		
 	}
 	
-
+	/*Estudiante estu = new Estudiante();
+	//estu.setId(3);
+	estu.setNombre("Alberto");
+	estu.setApellido("Estrella");
+	estu.setCedula("1723522403");
+	estu.setCiudad("Quito");
+	estu.setGenero("M");
+	
+	// Agregar:
+	//this.estudianteService.agregar(estu);
+	
+	 */	
 }
