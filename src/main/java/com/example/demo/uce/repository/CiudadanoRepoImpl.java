@@ -20,4 +20,20 @@ public class CiudadanoRepoImpl implements ICiudadanoRepo {
 		this.entityManager.persist(ciudadano);
 	}
 
+	@Override
+	public void actualizar(Ciudadano ciudadano) {
+		this.entityManager.merge(ciudadano);
+	}
+
+	@Override
+	public Ciudadano buscar(Integer id) {
+		return this.entityManager.find(Ciudadano.class, id);
+	}
+
+	@Override
+	public void borrar(Integer id) {
+		Ciudadano ci = this.buscar(id);
+		this.entityManager.remove(ci);
+	}
+
 }

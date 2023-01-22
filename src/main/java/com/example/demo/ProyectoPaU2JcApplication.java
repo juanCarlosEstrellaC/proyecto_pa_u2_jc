@@ -9,19 +9,23 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.uce.modelo.Ciudadano;
-import com.example.demo.uce.modelo.Empleado;
+import com.example.demo.uce.modelo.EMPLEADO;
 import com.example.demo.uce.modelo.Estudiante;
 import com.example.demo.uce.service.ICiudadanoService;
+import com.example.demo.uce.service.IEMPLEADOService;
 import com.example.demo.uce.service.IEstudianteService;
 
 @SpringBootApplication
 public class ProyectoPaU2JcApplication implements CommandLineRunner{
 
-	@Autowired
-	private IEstudianteService estudianteService;
+//	@Autowired
+//	private IEstudianteService estudianteService;
 	
 	@Autowired
 	private ICiudadanoService ciudadanoService;
+	
+	@Autowired
+	private IEMPLEADOService iempleadoService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoPaU2JcApplication.class, args);
@@ -29,7 +33,7 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Estudiante estu = new Estudiante();
+		/*Estudiante estu = new Estudiante();
 		//estu.setId(3);
 		estu.setNombre("Alberto");
 		estu.setApellido("Estrella");
@@ -38,21 +42,42 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 		estu.setGenero("M");
 		
 		// Agregar:
-		this.estudianteService.agregar(estu);
+		//this.estudianteService.agregar(estu);
+		
+		 */
 
+		
+//		Ciudadano ciu = new Ciudadano();
+//		ciu.setNombre("Juan");
+//		ciu.setApellido("Estrella");
+//		
+//		EMPLEADO empl = new EMPLEADO();
+//		empl.setSalario(new BigDecimal(20));
+//		empl.setFechaIngreso(LocalDateTime.now());
+//		empl.setCiudadano(ciu);
+//		
+//		this.iempleadoService.guardar(empl);
+//		
+//		ciu.setEmpleado(empl);
+//		
+//		this.ciudadanoService.guardar(ciu);
 		
 		Ciudadano ciu = new Ciudadano();
 		ciu.setNombre("Juan");
 		ciu.setApellido("Estrella");
-		
-		Empleado empl = new Empleado();
+		this.ciudadanoService.guardar(ciu);
+
+		EMPLEADO empl = new EMPLEADO();
 		empl.setSalario(new BigDecimal(20));
 		empl.setFechaIngreso(LocalDateTime.now());
 		empl.setCiudadano(ciu);
+		this.iempleadoService.guardar(empl);
+
 		
 		ciu.setEmpleado(empl);
+		this.iempleadoService.actualizar(empl);
 		
-		//this.ciudadanoService.guardar(ciu);
 	}
+	
 
 }

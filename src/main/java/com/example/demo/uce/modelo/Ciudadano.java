@@ -25,43 +25,36 @@ public class Ciudadano {
 	@Column(name = "ciud_apellido")
 	private String apellido;
 
-	public Integer getId() {
-		return id;
-	}
-	
 	// La clase se llama "principal" respecto a la relación de 1 a 1.
 	// Porque ciudadano tiene un empleado.
 	@OneToOne(mappedBy = "ciudadano")  //nombre de la variable tipo Ciudadano en la clase Empleado
-	private Empleado empleado;
-	
+	private EMPLEADO empleado;
+		
 	
 	
 	//GET Y SET
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public Empleado getEmpleado() {
-		return empleado;
-	}
-
-	public void setEmpleado(Empleado empleado) {
+		public Integer getId() {
+			return id;
+		}
+		public void setId(Integer id) {
+			this.id = id;
+		}
+		public String getNombre() {
+			return nombre;
+		}
+		public void setNombre(String nombre) {
+			this.nombre = nombre;
+		}
+		public String getApellido() {
+			return apellido;
+		}
+		public void setApellido(String apellido) {
+			this.apellido = apellido;
+		}
+		public EMPLEADO getEmpleado() {
+			return empleado;
+		}
+		public void setEmpleado(EMPLEADO empleado) {
 		this.empleado = empleado;
 	}
 	

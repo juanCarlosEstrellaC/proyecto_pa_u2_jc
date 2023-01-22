@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "empleado")
-public class Empleado {
+public class EMPLEADO {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "empl_seq")
@@ -37,7 +37,6 @@ public class Empleado {
 	
 	
 	//GET Y SET
-
 	public Integer getId() {
 		return id;
 	}
