@@ -2,7 +2,7 @@ package com.example.demo.uce.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.uce.modelo.EMPLEADO;
+import com.example.demo.uce.modelo.Empleado;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -16,23 +16,23 @@ public class EmpleadoRepoImpl implements IEmpleadoRepo {
 	private EntityManager entityManager;
 
 	@Override
-	public void insertar(EMPLEADO empleado) {
+	public void insertar(Empleado empleado) {
 		this.entityManager.persist(empleado);
 	}
 
 	@Override
-	public void actualizar(EMPLEADO empleado) {
+	public void actualizar(Empleado empleado) {
 		this.entityManager.merge(empleado);
 	}
 
 	@Override
-	public EMPLEADO buscar(Integer id) {
-		return this.entityManager.find(EMPLEADO.class, id);
+	public Empleado buscar(Integer id) {
+		return this.entityManager.find(Empleado.class, id);
 	}
 
 	@Override
 	public void borrar(Integer id) {
-		EMPLEADO em = this.buscar(id);
+		Empleado em = this.buscar(id);
 		this.entityManager.remove(em);
 	}
 	

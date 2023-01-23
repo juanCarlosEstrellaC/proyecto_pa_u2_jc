@@ -9,10 +9,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.uce.modelo.Ciudadano;
-import com.example.demo.uce.modelo.EMPLEADO;
+import com.example.demo.uce.modelo.Empleado;
 import com.example.demo.uce.modelo.Estudiante;
 import com.example.demo.uce.service.ICiudadanoService;
-import com.example.demo.uce.service.IEMPLEADOService;
+import com.example.demo.uce.service.IEmpleadoService;
 import com.example.demo.uce.service.IEstudianteService;
 
 @SpringBootApplication
@@ -25,7 +25,7 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 	private ICiudadanoService ciudadanoService;
 	
 	@Autowired
-	private IEMPLEADOService iempleadoService;
+	private IEmpleadoService iempleadoService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoPaU2JcApplication.class, args);
@@ -33,49 +33,71 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-	
-//		Ciudadano ciu = new Ciudadano();
-//		ciu.setNombre("Juan");
-//		ciu.setApellido("Estrella");
-//		
-//		EMPLEADO empl = new EMPLEADO();
-//		empl.setSalario(new BigDecimal(20));
-//		empl.setFechaIngreso(LocalDateTime.now());
-//		empl.setCiudadano(ciu);
-//		
-//		this.iempleadoService.guardar(empl);
-//		
-//		ciu.setEmpleado(empl);
-//		
-//		this.ciudadanoService.guardar(ciu);
 		
-		Ciudadano ciu = new Ciudadano();
-		ciu.setNombre("Juan");
-		ciu.setApellido("Estrella");
-		this.ciudadanoService.guardar(ciu);
+		// Ingresar y Actualizar ciudadanos y empleados:
+		Ciudadano miCiudadano = new Ciudadano();
+		miCiudadano.setNombre("Calqui");
+		miCiudadano.setApellido("Roa");
+		this.ciudadanoService.guardar(miCiudadano); //
 
-		EMPLEADO empl = new EMPLEADO();
-		empl.setSalario(new BigDecimal(20));
-		empl.setFechaIngreso(LocalDateTime.now());
-		empl.setCiudadano(ciu);
-		this.iempleadoService.guardar(empl);
+		Empleado miEmpleado = new Empleado();
+		miEmpleado.setSalario(new BigDecimal(100));
+		miEmpleado.setFechaIngreso(LocalDateTime.now());
+		miEmpleado.setCiudadano(miCiudadano);
+		this.iempleadoService.guardar(miEmpleado);	//
 
 		
-		ciu.setEmpleado(empl);
-		this.iempleadoService.actualizar(empl);
+		miCiudadano.setEmpleado(miEmpleado);
+		this.ciudadanoService.actualizar(miCiudadano);	//
+		this.iempleadoService.actualizar(miEmpleado);	//
 		
+		//Eliminar Empleado:
+		//this.iempleadoService.eliminar(6);
+		
+		//Buscar un ciudadano, e imprimir su apellido:
+		Ciudadano c = this.ciudadanoService.encontrar(2);
+		System.out.println(c.getApellido());
+		
+		//Buscar un empleado, e imprimir su salario:
+		Empleado e = this.iempleadoService.encontrar(4);
+		System.out.println(e.getSalario());
+		
+
 	}
 	
-	/*Estudiante estu = new Estudiante();
-	//estu.setId(3);
-	estu.setNombre("Alberto");
-	estu.setApellido("Estrella");
-	estu.setCedula("1723522403");
-	estu.setCiudad("Quito");
-	estu.setGenero("M");
-	
-	// Agregar:
-	//this.estudianteService.agregar(estu);
-	
-	 */	
 }
+
+
+
+
+
+
+
+
+//Ciudadano ciu = new Ciudadano();
+//ciu.setNombre("Juan");
+//ciu.setApellido("Estrella");
+//
+//EMPLEADO empl = new EMPLEADO();
+//empl.setSalario(new BigDecimal(20));
+//empl.setFechaIngreso(LocalDateTime.now());
+//empl.setCiudadano(ciu);
+//
+//this.iempleadoService.guardar(empl);
+//
+//ciu.setEmpleado(empl);
+//
+//this.ciudadanoService.guardar(ciu);
+
+/*Estudiante estu = new Estudiante();
+//estu.setId(3);
+estu.setNombre("Alberto");
+estu.setApellido("Estrella");
+estu.setCedula("1723522403");
+estu.setCiudad("Quito");
+estu.setGenero("M");
+
+// Agregar:
+//this.estudianteService.agregar(estu);
+
+ */	

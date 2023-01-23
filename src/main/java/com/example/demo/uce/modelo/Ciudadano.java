@@ -25,14 +25,20 @@ public class Ciudadano {
 	@Column(name = "ciud_apellido")
 	private String apellido;
 
-	// La clase se llama "principal" respecto a la relación de 1 a 1.
-	// Porque ciudadano tiene un empleado.
-	@OneToOne(mappedBy = "ciudadano")  //nombre de la variable tipo Ciudadano en la clase Empleado
-	private EMPLEADO empleado;
+	// La clase se llama "principal" o "padre [c]" respecto a la relación de 1 a 1, ya que esta tendrá la columna que "heredará" 
+	// a la otra tabla de la relación.
+	
+	@OneToOne(mappedBy = "ciudadano")  // MISMO nombre de la variable tipo Ciudadano en la clase Empleado, ie, "ciudadano".
+	private Empleado empleado;
 		
 	
+	// toString
+	@Override
+	public String toString() {
+		return "Ciudadano [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", empleado=" + empleado + "]";
+	}
 	
-	//GET Y SET
+		//GET Y SET
 		public Integer getId() {
 			return id;
 		}
@@ -51,10 +57,10 @@ public class Ciudadano {
 		public void setApellido(String apellido) {
 			this.apellido = apellido;
 		}
-		public EMPLEADO getEmpleado() {
+		public Empleado getEmpleado() {
 			return empleado;
 		}
-		public void setEmpleado(EMPLEADO empleado) {
+		public void setEmpleado(Empleado empleado) {
 		this.empleado = empleado;
 	}
 	

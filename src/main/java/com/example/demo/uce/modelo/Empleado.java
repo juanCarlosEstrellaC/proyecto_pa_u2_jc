@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "empleado")
-public class EMPLEADO {
+public class Empleado {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "empl_seq")
@@ -29,13 +29,19 @@ public class EMPLEADO {
 	@Column(name = "empl_fechaIngreso")
 	private LocalDateTime fechaIngreso;
 
-	// Porque un empleado tiene un ciudadano.
-	@OneToOne
+	//En la tabla empleado se creará una columna que será la del id del ciudadano, que vendrá desde la tabla ciudadano.
+	@OneToOne			// En la clase "Hija [c]" no se nada en el @OneToOne, como en la "padre" el "mapped by".
 	@JoinColumn(name = "empl_id_ciudadano")
 	private Ciudadano ciudadano;
 	
 	
-	
+	// toString
+	@Override
+	public String toString() {
+		return "EMPLEADO [id=" + id + ", salario=" + salario + ", fechaIngreso=" + fechaIngreso + ", ciudadano="
+				+ ciudadano + "]";
+	}
+
 	//GET Y SET
 	public Integer getId() {
 		return id;
