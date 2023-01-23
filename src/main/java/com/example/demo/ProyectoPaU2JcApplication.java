@@ -10,10 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.uce.modelo.Ciudadano;
 import com.example.demo.uce.modelo.Empleado;
-import com.example.demo.uce.modelo.Estudiante;
 import com.example.demo.uce.service.ICiudadanoService;
 import com.example.demo.uce.service.IEmpleadoService;
-import com.example.demo.uce.service.IEstudianteService;
 
 @SpringBootApplication
 public class ProyectoPaU2JcApplication implements CommandLineRunner{
