@@ -31,38 +31,26 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-
-		//Subida proyecto
 		
+		// Ejemplo 1: ingreso unicamente ciudadano, con empleado en cascada:
 		
+		// 1. Creo un ciudadano
+		Ciudadano ciu1 = new Ciudadano();
+		ciu1.setNombre("Julian");
+		ciu1.setApellido("Alvarez");
+			
+			// 1.2. Creo un empleado
+			Empleado empl1 = new Empleado();
+			empl1.setSalario(new BigDecimal(4000));
+			empl1.setFechaIngreso(LocalDateTime.now());
+			empl1.setCiudadano(ciu1);
+			
+		// y seteo el empleado con el creado anteriormente (sigue siendo el paso 1).
+		ciu1.setEmpleado(empl1);		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-//	// Ejemplo 1: ingreso unicamente ciudadano, con empleado en cascada:
-//		
-//		// 1. Creo un ciudadano
-//		Ciudadano ciu1 = new Ciudadano();
-//		ciu1.setNombre("Julian");
-//		ciu1.setApellido("Alvarez");
-//			
-//			// 1.2. Creo un empleado
-//			Empleado empl1 = new Empleado();
-//			empl1.setSalario(new BigDecimal(4000));
-//			empl1.setFechaIngreso(LocalDateTime.now());
-//			empl1.setCiudadano(ciu1);
-//			
-//		// y seteo el empleado con el creado anteriormente (sigue siendo el paso 1).
-//		ciu1.setEmpleado(empl1);		
-//		
-//		// 2. Inserto en la DB solo el ciudadano, y como está en cascada, se ingresará también el empleado,
-//		//    sin necesidad de llamar a un "this.empleadoService.guardar(empl1)".
-//		this.ciudadanoService.guardar(ciu1);
+		// 2. Inserto en la DB solo el ciudadano, y como está en cascada, se ingresará también el empleado,
+		//    sin necesidad de llamar a un "this.empleadoService.guardar(empl1)".
+		this.ciudadanoService.guardar(ciu1);
 		
 	// Ejemplo 2: ingreso unicamente empleado, con ciudadano en cascada:
 		
