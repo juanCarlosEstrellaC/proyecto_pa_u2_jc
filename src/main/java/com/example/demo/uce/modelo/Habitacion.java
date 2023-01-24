@@ -32,32 +32,23 @@ public class Habitacion {
 	private Hotel hotel;
 	
 	// Get y Set
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNumero() {
-		return numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-	public Hotel getHotel() {
-		return hotel;
-	}
-
-	public void setHotel(Hotel hotel) {
-		this.hotel = hotel;
-	}
-	
-	
-	
-	
+		public Integer getId() {
+			return id;
+		}
+		public void setId(Integer id) {
+			this.id = id;
+		}
+		public String getNumero() {
+			return numero;
+		}
+		public void setNumero(String numero) {
+			this.numero = numero;
+		}
+		public Hotel getHotel() {
+			return hotel;
+		}
+		public void setHotel(Hotel hotel) {
+			this.hotel = hotel;
+		}
 
 }

@@ -32,40 +32,41 @@ public class Hotel {
 	@OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
 	private List<Habitacion> habitaciones;
 	
-	// Get y Set
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-
-	public List<Habitacion> getHabitaciones() {
-		return habitaciones;
-	}
-
-	public void setHabitaciones(List<Habitacion> habitaciones) {
-		this.habitaciones = habitaciones;
+	
+	
+	@Override
+	public String toString() {
+		return "Hotel [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", habitaciones=" + habitaciones
+				+ ", getId()=" + getId() + ", getNombre()=" + getNombre() + ", getDireccion()=" + getDireccion()
+				+ ", getHabitaciones()=" + getHabitaciones() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}
 	
 	
-	
+		// Get y Set
+		public Integer getId() {
+			return id;
+		}
+		public void setId(Integer id) {
+			this.id = id;
+		}
+		public String getNombre() {
+			return nombre;
+		}
+		public void setNombre(String nombre) {
+			this.nombre = nombre;
+		}
+		public String getDireccion() {
+			return direccion;
+		}
+		public void setDireccion(String direccion) {
+			this.direccion = direccion;
+		}
+		public List<Habitacion> getHabitaciones() {
+			return habitaciones;
+		}
+		public void setHabitaciones(List<Habitacion> habitaciones) {
+			this.habitaciones = habitaciones;
+		}
+			
 }

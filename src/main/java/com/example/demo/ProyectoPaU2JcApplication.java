@@ -1,30 +1,23 @@
 package com.example.demo;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.uce.modelo.Ciudadano;
-import com.example.demo.uce.modelo.Empleado;
-import com.example.demo.uce.service.ICiudadanoService;
-import com.example.demo.uce.service.IEmpleadoService;
+import com.example.demo.uce.modelo.Habitacion;
+import com.example.demo.uce.modelo.Hotel;
+import com.example.demo.uce.service.IHotelService;
 
 @SpringBootApplication
 public class ProyectoPaU2JcApplication implements CommandLineRunner{
-
-//	@Autowired
-//	private IEstudianteService estudianteService;
 	
 	@Autowired
-	private ICiudadanoService ciudadanoService;
-	
-	@Autowired
-	private IEmpleadoService empleadoService;
-	
+	private IHotelService iHotelService;
+		
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoPaU2JcApplication.class, args);
 	}
@@ -32,46 +25,59 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		// Ejemplo 1: ingreso unicamente ciudadano, con empleado en cascada:
+		Hotel miHotel = new Hotel();
+		miHotel.setNombre("B");
+		miHotel.setDireccion("jfk");
 		
-		// 1. Creo un ciudadano
-		Ciudadano ciu1 = new Ciudadano();
-		ciu1.setNombre("Julian");
-		ciu1.setApellido("Alvarez");
+			List<Habitacion> miListaHabitaciones = new ArrayList<Habitacion>();
 			
-			// 1.2. Creo un empleado
-			Empleado empl1 = new Empleado();
-			empl1.setSalario(new BigDecimal(4000));
-			empl1.setFechaIngreso(LocalDateTime.now());
-			empl1.setCiudadano(ciu1);
+			Habitacion habitacion1 = new Habitacion();
+			habitacion1.setNumero("1");
+			habitacion1.setHotel(miHotel);
+			miListaHabitaciones.add(habitacion1);
+
+			Habitacion habitacion2 = new Habitacion();
+			habitacion2.setNumero("2");
+			habitacion2.setHotel(miHotel);
+			miListaHabitaciones.add(habitacion2);
+
+			Habitacion habitacion3 = new Habitacion();
+			habitacion3.setNumero("3");
+			habitacion3.setHotel(miHotel);
+			miListaHabitaciones.add(habitacion3);
 			
-		// y seteo el empleado con el creado anteriormente (sigue siendo el paso 1).
-		ciu1.setEmpleado(empl1);		
-		
-		// 2. Inserto en la DB solo el ciudadano, y como está en cascada, se ingresará también el empleado,
-		//    sin necesidad de llamar a un "this.empleadoService.guardar(empl1)".
-		this.ciudadanoService.guardar(ciu1);
-		
-	// Ejemplo 2: ingreso unicamente empleado, con ciudadano en cascada:
-		
-		// 1. Creo un Empleado
-		Empleado empl2 = new Empleado();
-		empl2.setSalario(new BigDecimal(7));
-		empl2.setFechaIngreso(LocalDateTime.now());
+			Habitacion habitacion4 = new Habitacion();
+			habitacion4.setNumero("4");
+			habitacion4.setHotel(miHotel);
+			miListaHabitaciones.add(habitacion4);
+
+			Habitacion habitacion5 = new Habitacion();
+			habitacion5.setNumero("5");
+			habitacion5.setHotel(miHotel);
+			miListaHabitaciones.add(habitacion5);
+
+			Habitacion habitacion6 = new Habitacion();
+			habitacion6.setNumero("6");
+			habitacion6.setHotel(miHotel);
+			miListaHabitaciones.add(habitacion6);
 			
-			//1.2. Creo un ciudadano
-			Ciudadano ciu2 = new Ciudadano();
-			ciu2.setNombre("dfhgjk");
-			ciu2.setApellido("abc");
-			ciu2.setEmpleado(empl2); 
+		miHotel.setHabitaciones(miListaHabitaciones);
+		
+		
+		// Guardar hotel y habitacion
+		this.iHotelService.guardar(miHotel);
+		
+		// Busqueda
+		Hotel hotelbus = this.iHotelService.encontrar(6);
 			
-		// y Seteo el ciudadano con el creado anteriormente (sigue siendo el paso 1).
-		empl2.setCiudadano(ciu2);
+		// Actualizo
+		hotelbus.setNombre("HotelBus");
+		this.iHotelService.actualizar(hotelbus);
 		
-		// 2. Inserto en la DB solo el empleado, y como está en cascada, se ingresará también el ciudadano,
-		//    sin necesidad de llamar a un "this.ciudadanoService.guardar(ciu1)".
-		this.empleadoService.guardar(empl2);
-		
+		// Borrar
+		this.iHotelService.eliminar(6);
+	
 	}
 	
 }
+
