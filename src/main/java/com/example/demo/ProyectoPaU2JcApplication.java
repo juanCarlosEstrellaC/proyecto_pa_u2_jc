@@ -23,7 +23,7 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 	private ICiudadanoService ciudadanoService;
 	
 	@Autowired
-	private IEmpleadoService iempleadoService;
+	private IEmpleadoService empleadoService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoPaU2JcApplication.class, args);
@@ -31,71 +31,56 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		
-		// Ingresar y Actualizar ciudadanos y empleados:
-		Ciudadano miCiudadano = new Ciudadano();
-		miCiudadano.setNombre("Calqui");
-		miCiudadano.setApellido("Roa");
-		this.ciudadanoService.guardar(miCiudadano); //
 
-		Empleado miEmpleado = new Empleado();
-		miEmpleado.setSalario(new BigDecimal(100));
-		miEmpleado.setFechaIngreso(LocalDateTime.now());
-		miEmpleado.setCiudadano(miCiudadano);
-		this.iempleadoService.guardar(miEmpleado);	//
-
+		//Subida proyecto
 		
-		miCiudadano.setEmpleado(miEmpleado);
-		this.ciudadanoService.actualizar(miCiudadano);	//
-		this.iempleadoService.actualizar(miEmpleado);	//
 		
-		//Eliminar Empleado:
-		//this.iempleadoService.eliminar(6);
 		
-		//Buscar un ciudadano, e imprimir su apellido:
-		Ciudadano c = this.ciudadanoService.encontrar(2);
-		System.out.println(c.getApellido());
 		
-		//Buscar un empleado, e imprimir su salario:
-		Empleado e = this.iempleadoService.encontrar(4);
-		System.out.println(e.getSalario());
 		
-
+		
+		
+		
+		
+		
+		
+//	// Ejemplo 1: ingreso un ciudadano, con empleado:
+//		
+//		// 1ro. Creo un ciudadano
+//		Ciudadano ciu1 = new Ciudadano();
+//		ciu1.setNombre("AAA");
+//		ciu1.setApellido("Roman");
+//			
+//		// 2do. Creo un empleado
+//			Empleado empl1 = new Empleado();
+//			empl1.setSalario(new BigDecimal(20));
+//			empl1.setFechaIngreso(LocalDateTime.now());
+//			empl1.setCiudadano(ciu1);
+//			
+//		// 3ro. Ingreso el empleado con el creado anteriormente.
+//		ciu1.setEmpleado(empl1);		
+//		
+//		this.ciudadanoService.guardar(ciu1);
+		
+//	// Ejemplo 2: ingreso un empleado, con ciudadano 2:
+//		
+//		// 1ro. Creo un Empleado
+//		Empleado empl2 = new Empleado();
+//		empl2.setSalario(new BigDecimal(7));
+//		empl2.setFechaIngreso(LocalDateTime.now());
+//			
+//		//2do. Creo un ciudadano
+//			Ciudadano ciu2 = new Ciudadano();
+//			ciu2.setNombre("dfhgjk");
+//			ciu2.setApellido("abc");
+//			ciu2.setEmpleado(empl2); //**************????????????? va, creo q si
+//			
+//		// 3ro. Ingreso el ciudadano con el creado anteriormente.
+//		empl2.setCiudadano(ciu2);
+//		
+//		// 4to: Guardo el empleado
+//		this.empleadoService.guardar(empl2);
+		
 	}
 	
 }
-
-
-
-
-
-
-
-
-//Ciudadano ciu = new Ciudadano();
-//ciu.setNombre("Juan");
-//ciu.setApellido("Estrella");
-//
-//EMPLEADO empl = new EMPLEADO();
-//empl.setSalario(new BigDecimal(20));
-//empl.setFechaIngreso(LocalDateTime.now());
-//empl.setCiudadano(ciu);
-//
-//this.iempleadoService.guardar(empl);
-//
-//ciu.setEmpleado(empl);
-//
-//this.ciudadanoService.guardar(ciu);
-
-/*Estudiante estu = new Estudiante();
-//estu.setId(3);
-estu.setNombre("Alberto");
-estu.setApellido("Estrella");
-estu.setCedula("1723522403");
-estu.setCiudad("Quito");
-estu.setGenero("M");
-
-// Agregar:
-//this.estudianteService.agregar(estu);
-
- */	

@@ -3,6 +3,7 @@ package com.example.demo.uce.modelo;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,12 +31,12 @@ public class Empleado {
 	private LocalDateTime fechaIngreso;
 
 	//En la tabla empleado se creará una columna que será la del id del ciudadano, que vendrá desde la tabla ciudadano.
-	@OneToOne			// En la clase "Hija [c]" no se nada en el @OneToOne, como en la "padre" el "mapped by".
+	@OneToOne(cascade = CascadeType.ALL)			// En la clase "Hija [c]" no se nada en el @OneToOne, como en la "padre" el "mapped by".
 	@JoinColumn(name = "empl_id_ciudadano")
 	private Ciudadano ciudadano;
 	
 	
-	// toString
+	// toString	S
 	@Override
 	public String toString() {
 		return "EMPLEADO [id=" + id + ", salario=" + salario + ", fechaIngreso=" + fechaIngreso + ", ciudadano="

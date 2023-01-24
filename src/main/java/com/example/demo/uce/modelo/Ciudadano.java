@@ -1,5 +1,6 @@
 package com.example.demo.uce.modelo;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class Ciudadano {
 	// La clase se llama "principal" o "padre [c]" respecto a la relación de 1 a 1, ya que esta tendrá la columna que "heredará" 
 	// a la otra tabla de la relación.
 	
-	@OneToOne(mappedBy = "ciudadano")  // MISMO nombre de la variable tipo Ciudadano en la clase Empleado, ie, "ciudadano".
+	@OneToOne(mappedBy = "ciudadano", cascade = CascadeType.ALL)  // MISMO nombre de la variable tipo Ciudadano en la clase Empleado, ie, "ciudadano".
 	private Empleado empleado;
 		
 	
