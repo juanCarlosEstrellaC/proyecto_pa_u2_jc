@@ -25,11 +25,21 @@ public class HotelRepoImpl implements IHotelRepo {
 		this.entityManager.merge(hotel);
 	}
 
+	// reporte de hoteles y habitaciones (se trae cuando yo lo necesito, bajo demanda)
 	@Override
 	public Hotel buscar(Integer id) {
+		Hotel h = entityManager.find(Hotel.class, id);
+		h.getHabitaciones().size();
 		return this.entityManager.find(Hotel.class, id);
 	}
 
+	// reporte solo de hoteles.
+	public Hotel buscarligero(Integer id) {
+		Hotel h = entityManager.find(Hotel.class, id);
+		h.getHabitaciones();
+		return this.entityManager.find(Hotel.class, id);
+	}
+	
 	@Override
 	public void borrar(Integer id) {
 		Hotel hote = this.buscar(id);

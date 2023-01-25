@@ -14,22 +14,22 @@ public class HabitacionServiceImpl implements IHabitacionService{
 	
 	@Override
 	public void guardar(Habitacion habitacion) {
-		//this.iHabitacionRepo.insertar(habitacion);
+		this.iHabitacionRepo.insertar(habitacion);
 	}
 
 	@Override
 	public void actualizar(Habitacion habitacion) {
-//		this.iHabitacionRepo.actualizar(habitacion);
+		this.iHabitacionRepo.actualizar(habitacion);
 	}
 
 	@Override
 	public Habitacion encontrar(Integer id) {
-		return null; //this.iHabitacionRepo.buscar(id);
+		return this.iHabitacionRepo.buscar(id);
 	}
 
 	@Override
 	public void eliminar(Integer id) {
-//		this.iHabitacionRepo.borrar(id);
+		this.iHabitacionRepo.borrar(id);
 	}
 	
 

@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.uce.modelo.Habitacion;
 import com.example.demo.uce.modelo.Hotel;
+import com.example.demo.uce.service.IHabitacionService;
 import com.example.demo.uce.service.IHotelService;
 
 @SpringBootApplication
@@ -17,6 +18,9 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 	
 	@Autowired
 	private IHotelService iHotelService;
+	
+	@Autowired
+	private IHabitacionService iHabitacionService;
 		
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoPaU2JcApplication.class, args);
@@ -64,20 +68,47 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 		miHotel.setHabitaciones(miListaHabitaciones);
 		
 		
-		// Guardar hotel y habitacion
-		this.iHotelService.guardar(miHotel);
+//		// Guardar hotel y habitacion
+//		this.iHotelService.guardar(miHotel);
+//		
+//		// Busqueda
+//		Hotel hotelbus = this.iHotelService.encontrar(6);
+//			
+//		// Actualizo
+//		hotelbus.setNombre("HotelBus");
+//		this.iHotelService.actualizar(hotelbus);
+//		
+//		// Borrar
+//		this.iHotelService.eliminar(6);
 		
-		// Busqueda
-		Hotel hotelbus = this.iHotelService.encontrar(6);
-			
-		// Actualizo
-		hotelbus.setNombre("HotelBus");
-		this.iHotelService.actualizar(hotelbus);
+//		Habitacion habitacion7 = new Habitacion();
+//		habitacion7.setNumero("7");
+//		habitacion7.setHotel(miHotel);
+//		miListaHabitaciones.add(habitacion7);
+//		
+//		this.iHabitacionService.guardar(habitacion7);
 		
-		// Borrar
-		this.iHotelService.eliminar(6);
+//		Hotel hotelo = this.iHotelService.encontrar(7);
+//		
+//		Habitacion habitacion8 = new Habitacion();
+//		habitacion8.setNumero("8");
+//		habitacion8.setHotel(hotelo);
+//		miListaHabitaciones.add(habitacion8);
+//		
+//		this.iHabitacionService.guardar(habitacion8);	
+		
+		
+		//Habitacion habitoide = this.iHabitacionService.encontrar(47);
+
+		// Consultar el hotel por id e imprimir todas las habitaciones.
+		Hotel hotelo = this.iHotelService.encontrar(7);		
+		for(Habitacion habitacion : hotelo.getHabitaciones()) {
+			System.out.println(habitacion);
+		}
 	
+		
+		
 	}
-	
 }
+	
 

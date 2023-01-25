@@ -27,11 +27,17 @@ public class Habitacion {
 	
 	
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "habi_id_hotel") //habi_... porque es una columna de habitación, y con esa nomenclatura usamos para hacer columnas.
 	private Hotel hotel;
 	
-	// Get y Set
+	
+	
+	@Override
+	public String toString() {
+		return "Habitacion [id=" + id + ", numero=" + numero +  "]";
+	}
+		// Get y Set
 		public Integer getId() {
 			return id;
 		}
