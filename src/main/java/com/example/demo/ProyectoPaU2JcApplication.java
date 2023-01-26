@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,20 +10,18 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.uce.modelo.Habitacion;
-import com.example.demo.uce.modelo.Hotel;
-import com.example.demo.uce.service.IHabitacionService;
-import com.example.demo.uce.service.IHotelService;
+import com.example.demo.uce.onetoone.modelo.Automovil;
+import com.example.demo.uce.onetoone.modelo.Matricula;
+import com.example.demo.uce.onetoone.service.IAutomovilService;
+
 
 @SpringBootApplication
 public class ProyectoPaU2JcApplication implements CommandLineRunner{
-	
-	@Autowired
-	private IHotelService iHotelService;
-	
-	@Autowired
-	private IHabitacionService iHabitacionService;
+
 		
+	@Autowired
+	private IAutomovilService iAutomovilService;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoPaU2JcApplication.class, args);
 	}
@@ -29,86 +29,32 @@ public class ProyectoPaU2JcApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Hotel miHotel = new Hotel();
-		miHotel.setNombre("B");
-		miHotel.setDireccion("jfk");
+		// Creo un automovil con cascade para que guarde la relación de matricula también.
+		Automovil miAuto = new Automovil();
+		miAuto.setMarca("Chevi");
+		miAuto.setModelo("Carvallo");
+		miAuto.setModelo("1988");
+		miAuto.setPrecio(new BigDecimal(23000));
+			Matricula miMatricula= new Matricula();
+			miMatricula.setFechaMatricula(LocalDateTime.now());
+			miMatricula.setValor(new BigDecimal(255));
+			miMatricula.setAutomovilEnMatricula(miAuto);
+		miAuto.setMatriculaEnAutomovil(miMatricula);
 		
-			List<Habitacion> miListaHabitaciones = new ArrayList<Habitacion>();
-			
-			Habitacion habitacion1 = new Habitacion();
-			habitacion1.setNumero("1");
-			habitacion1.setHotel(miHotel);
-			miListaHabitaciones.add(habitacion1);
-
-			Habitacion habitacion2 = new Habitacion();
-			habitacion2.setNumero("2");
-			habitacion2.setHotel(miHotel);
-			miListaHabitaciones.add(habitacion2);
-
-			Habitacion habitacion3 = new Habitacion();
-			habitacion3.setNumero("3");
-			habitacion3.setHotel(miHotel);
-			miListaHabitaciones.add(habitacion3);
-			
-			Habitacion habitacion4 = new Habitacion();
-			habitacion4.setNumero("4");
-			habitacion4.setHotel(miHotel);
-			miListaHabitaciones.add(habitacion4);
-
-			Habitacion habitacion5 = new Habitacion();
-			habitacion5.setNumero("5");
-			habitacion5.setHotel(miHotel);
-			miListaHabitaciones.add(habitacion5);
-
-			Habitacion habitacion6 = new Habitacion();
-			habitacion6.setNumero("6");
-			habitacion6.setHotel(miHotel);
-			miListaHabitaciones.add(habitacion6);
-			
-		miHotel.setHabitaciones(miListaHabitaciones);
+		//this.iAutomovilService.guardar(miAuto);
 		
+		// buscar:
+		//Automovil carrito = this.iAutomovilService.encontrar(2);
+		//System.out.println(carrito);
 		
-//		// Guardar hotel y habitacion
-//		this.iHotelService.guardar(miHotel);
-//		
-//		// Busqueda
-//		Hotel hotelbus = this.iHotelService.encontrar(6);
-//			
-//		// Actualizo
-//		hotelbus.setNombre("HotelBus");
-//		this.iHotelService.actualizar(hotelbus);
-//		
-//		// Borrar
-//		this.iHotelService.eliminar(6);
+		// actualizar:
+		//carrito.setMarca("Nissan");
+		//this.iAutomovilService.actualizar(carrito);
 		
-//		Habitacion habitacion7 = new Habitacion();
-//		habitacion7.setNumero("7");
-//		habitacion7.setHotel(miHotel);
-//		miListaHabitaciones.add(habitacion7);
-//		
-//		this.iHabitacionService.guardar(habitacion7);
-		
-//		Hotel hotelo = this.iHotelService.encontrar(7);
-//		
-//		Habitacion habitacion8 = new Habitacion();
-//		habitacion8.setNumero("8");
-//		habitacion8.setHotel(hotelo);
-//		miListaHabitaciones.add(habitacion8);
-//		
-//		this.iHabitacionService.guardar(habitacion8);	
-		
-		
-		//Habitacion habitoide = this.iHabitacionService.encontrar(47);
-
-		// Consultar el hotel por id e imprimir todas las habitaciones.
-		Hotel hotelo = this.iHotelService.encontrar(7);		
-		for(Habitacion habitacion : hotelo.getHabitaciones()) {
-			System.out.println(habitacion);
-		}
-	
-		
-		
+		// borrar:
+		this.iAutomovilService.eliminar(2);
 	}
 }
-	
+
+
 
