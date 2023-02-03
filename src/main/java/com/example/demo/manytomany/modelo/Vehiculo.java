@@ -1,4 +1,4 @@
-package com.example.demo.uce.modelo;
+package com.example.demo.manytomany.modelo;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -43,13 +43,13 @@ public class Vehiculo{
 	
 	// Muchos a muchos: Un vehículo es rentado por muchos clientes y 1 cliente renta muchos vehículos.
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(
-			name = "vehiculo_cliente",
+			name = "vehiculo_usuario",
 			joinColumns = @JoinColumn(name = "clievehi_id_vehiculo"),
 			inverseJoinColumns = @JoinColumn(name = "clievehi_id_cliente")
 			)
-	private Set<Cliente2> misClientes;
+	private Set<Usuario> misClientes;
 	
 	//Get y Set
 	public Integer getId() {
@@ -93,11 +93,11 @@ public class Vehiculo{
 	}
 
 	
-	public Set<Cliente2> getMisClientes() {
+	public Set<Usuario> getMisClientes() {
 		return misClientes;
 	}
 
-	public void setMisClientes(Set<Cliente2> misClientes) {
+	public void setMisClientes(Set<Usuario> misClientes) {
 		this.misClientes = misClientes;
 	}
 

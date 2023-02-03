@@ -1,4 +1,4 @@
-package com.example.demo.uce.modelo;
+package com.example.demo.manytomany.modelo;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -15,8 +15,8 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "cliente2")
-public class Cliente2 {
+@Table(name = "usuario")
+public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "clie_seq")

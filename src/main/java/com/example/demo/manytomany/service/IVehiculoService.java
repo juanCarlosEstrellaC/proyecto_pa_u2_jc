@@ -1,6 +1,6 @@
-package com.example.demo.uce.service;
+package com.example.demo.manytomany.service;
 
-import com.example.demo.uce.modelo.Vehiculo;
+import com.example.demo.manytomany.modelo.Vehiculo;
 
 public interface IVehiculoService {
 	

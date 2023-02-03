@@ -1,8 +1,8 @@
-package com.example.demo.uce.repository;
+package com.example.demo.manytomany.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.uce.modelo.Vehiculo;
+import com.example.demo.manytomany.modelo.Vehiculo;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

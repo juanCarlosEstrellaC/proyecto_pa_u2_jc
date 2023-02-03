@@ -1,10 +1,10 @@
-package com.example.demo.uce.service;
+package com.example.demo.manytomany.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.uce.modelo.Vehiculo;
-import com.example.demo.uce.repository.IVehiculoRepository;
+import com.example.demo.manytomany.modelo.Vehiculo;
+import com.example.demo.manytomany.repository.IVehiculoRepository;
 
 @Service
 public class VehiculoServiceImpl implements IVehiculoService{

@@ -1,6 +1,6 @@
-package com.example.demo.uce.repository;
+package com.example.demo.manytomany.repository;
 
-import com.example.demo.uce.modelo.Vehiculo;
+import com.example.demo.manytomany.modelo.Vehiculo;
 
 public interface IVehiculoRepository {
 
